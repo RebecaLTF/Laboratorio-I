@@ -1,0 +1,59 @@
+#include <stdio.h>
+#define SIZE 30
+
+void ler_vetor(int vetor[]){
+    int i = 0;
+    do{
+        printf("Digite o código [%d] (1 a 20):  ", i+1);
+        scanf("%d", &vetor[i]);
+        if(vetor[i]>= 1 && vetor[i]<=20){
+            i++;
+        }
+        else{
+            printf("Codigo inválido.\n");
+        }
+    }while(i < SIZE);
+    
+}
+int contar(int vetor[], int codigo){
+    int i = 0;
+    int cont = 0;
+    do{
+        if(vetor[i]==codigo){
+            cont++;
+        }
+        i++;
+    }while(i < SIZE);
+    return cont;
+}
+
+void posicao(int vetor[], int codigo){
+    int i = 0;
+    printf("Posições: ");
+    do{
+        if(vetor[i]==codigo){
+           printf("%d ", i+1);
+        }
+        i++;
+    }while(i < SIZE);
+    printf("\n");
+}
+
+int main(){
+    int vetor[SIZE];
+    int codigo, quantidade;
+    
+    ler_vetor(vetor);
+    printf("Pesquisar: ");
+    scanf("%d", &codigo);
+    quantidade = contar(vetor, codigo);
+    if(quantidade == 0){
+        printf("Código não encontrado\n");
+    }
+    else{
+        printf("Código encontrado %d vezes.\n", quantidade);
+        posicao(vetor,codigo);
+    }
+
+    return 0;
+}

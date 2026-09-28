@@ -1,0 +1,58 @@
+#include <stdio.h>
+
+int main(){
+    
+    int nota, not1, not2, not3, not4, not5;
+    not1 = not2 = not3 = not4 = not5 = 0;
+    int contador = 0;
+    float percentual, soma;
+    soma = 0.0;
+    
+    printf("Forneça uma nota [1-5] de acordo com sua satisfação: ");
+    scanf("%d", &nota);
+    
+    while (nota != 0){
+        if (nota < 1 || nota > 5){
+            printf("Nota invalida. Digite um valor entre 1 e 5.\n");
+        }
+        else{
+            if (nota == 1){
+                not1++;
+            }
+            if (nota == 2){
+                not2++;
+            }
+            if (nota == 3){
+                not3++;
+            }
+            if (nota == 4){
+                not4++;
+            }
+            if (nota == 5){
+                not5++;
+            }
+            soma += nota;
+            contador++;
+        }
+        printf("Forneça uma nota [1-5] de acordo com sua satisfação: ");
+        scanf("%d", &nota);
+    }
+    
+    if (contador > 0){
+        percentual = ((not4 + not5) * 100.0f) / contador;
+
+        printf("Total de respostas: %d\n", contador);
+        printf("Nota 1: %d\n", not1);
+        printf("Nota 2: %d\n", not2);
+        printf("Nota 3: %d\n", not3);
+        printf("Nota 4: %d\n", not4);
+        printf("Nota 5: %d\n", not5);
+        printf("Media: %.2f\n", soma / contador);
+        printf("Percentual de respostas 4 ou 5: %.2f%%\n", percentual);
+    }
+    else{
+        printf("Nenhuma resposta válida foi registrada.\n");
+    }
+    
+    return 0;
+}

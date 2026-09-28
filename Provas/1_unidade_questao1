@@ -1,0 +1,49 @@
+#define SENTINELA -999
+#define LIMITE_MINIMO -273.15  
+
+#include <stdio.h>
+
+int main(){
+
+    float temperatura;
+    float soma = 0.0;
+    float maior = 0.0;
+    float menor = 0.0;
+    int contador = 0;
+
+    printf("Temperatura em Celsius: ");
+    scanf("%f", &temperatura);
+
+    while (temperatura != SENTINELA){
+        if (temperatura < LIMITE_MINIMO){
+            printf("Temperatura invalida. Tente novamente.\n");
+        }
+        else{
+            if (contador == 0){
+                maior = menor = temperatura;
+            }
+            if (temperatura > maior){
+                maior = temperatura;
+            }
+            if (temperatura < menor){
+                menor = temperatura;
+            }
+            soma += temperatura;
+            contador++;
+        }
+        printf("Temperatura em Celsius: ");
+        scanf("%f", &temperatura);
+    }
+
+    if (contador > 0){
+        printf("Quantidade de temperaturas: %d\n", contador);
+        printf("Maior temperatura: %g\n", maior);
+        printf("Menor temperatura: %g\n", menor);
+        printf("Media: %.2f\n", soma / contador);
+    }
+    else{
+        printf("Nenhuma temperatura valida foi registrada.\n");
+    }
+
+    return 0;
+}
